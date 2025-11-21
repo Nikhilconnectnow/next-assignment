@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+	--bg: #ffffff;
+	--fg: #0b0b0b;
+	--primary: #06b6d4;
+	--accent: #7c3aed;
+	--coral: #fb7185;
+	--amber: #f59e0b;
+	--muted: #f5f6f7;
+	--soft: #e6e7e8;
+	--mid: #9aa0a6;
+}
+
+html,body{height:100%;}
+body{
+	margin:0;
+	font-family: Inter, Arial, sans-serif;
+	background-color:var(--bg);
+	color:var(--fg);
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+
+/* container defaults used across pages */
+.site-container{@apply max-w-4xl mx-auto px-6 py-8;} 
+
+/* classy header */
+.brand{ @apply text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent }
+.subtle{ color:var(--mid); }
+
+/* form controls */
+input, textarea, select{ @apply border border-gray-200 rounded-md px-3 py-2 bg-white text-sm; }
+button{ @apply px-4 py-2 rounded-md hover:opacity-95 transition-all; }
+
+/* button variants */
+.btn-primary{ @apply text-white bg-gradient-to-r from-primary to-accent shadow-md }
+.btn-outline{ @apply bg-white text-primary border border-primary }
+.btn-ghost{ @apply bg-transparent text-primary }
+
+/* small card */
+.card{ @apply bg-white border border-gray-100 rounded-xl p-4 shadow-lg ring-1 ring-gray-50 }
+.card-accent{ @apply border-l-4 border-primary }
+
+/* animations (also available via Tailwind animation names) */
+.fade-in{ animation: fadeIn 300ms ease-out both; }
+.slide-up{ animation: slideUp 320ms cubic-bezier(.2,.8,.2,1) both; }
+
+/* emphasize interactive elements */
+.cta{ @apply bg-black text-white rounded-lg px-4 py-2 inline-flex items-center gap-2; }
+
+@media (prefers-reduced-motion: reduce){
+	*{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
