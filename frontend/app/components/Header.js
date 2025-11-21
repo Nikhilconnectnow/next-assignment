@@ -29,8 +29,8 @@ export default function Header(){
       <nav className="flex items-center gap-3">
         {auth ? (
           <>
-            <Link className="text-sm text-red-600 hover:text-red-700 transition-colors" href="/">Home</Link>
-            <Link className="text-sm text-red-600 hover:text-red-700 transition-colors" href="/dashboard">Dashboard</Link>
+            <Link className="text-sm subtle hover:text-primary transition-colors" href="/">Home</Link>
+            <Link className="text-sm subtle hover:text-primary transition-colors" href="/dashboard">Dashboard</Link>
             <Button variant="ghost" onClick={logout} className="ml-2 text-sm text-red-600 border border-red-600 hover:bg-red-50">Logout</Button>
           </>
         ) : (
