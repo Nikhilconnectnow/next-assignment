@@ -30,30 +30,32 @@ export default function Login(){
   }
 
   return (
-    <Card>
-      <h2 className="text-lg font-semibold">Login</h2>
-      <form onSubmit={submit} className="mt-4 max-w-md w-full grid gap-3">
-        <input
-          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-          value={email}
-          onChange={e=>setEmail(e.target.value)}
-          placeholder='Email'
-          type='email'
-          required
-        />
-        <input
-          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-          value={password}
-          onChange={e=>setPassword(e.target.value)}
-          placeholder='Password'
-          type='password'
-          required
-        />
-        <div className="flex items-center gap-3">
-          <Button type='submit' className="flex-1">Login</Button>
-        </div>
-        {err && <p className="text-red-600 text-sm">{err}</p>}
-      </form>
-    </Card>
+    <div className="flex justify-center items-center py-12">
+      <Card className="w-full max-w-md">
+        <h2 className="text-lg font-semibold">Login</h2>
+        <form onSubmit={submit} className="mt-4 w-full grid gap-3">
+          <input
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            value={email}
+            onChange={e=>setEmail(e.target.value)}
+            placeholder='Email'
+            type='email'
+            required
+          />
+          <input
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            value={password}
+            onChange={e=>setPassword(e.target.value)}
+            placeholder='Password'
+            type='password'
+            required
+          />
+          <div className="flex items-center gap-3">
+            <Button type='submit' className="flex-1">Login</Button>
+          </div>
+          {err && <p className="text-red-600 text-sm">{err}</p>}
+        </form>
+      </Card>
+    </div>
   )
 }
