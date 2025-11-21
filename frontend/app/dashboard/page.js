@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Card from '../components/Card';
 import Button from '../components/Button';
+import { API_ENDPOINTS, getItemsEndpoint, getItemEndpoint } from '../../lib/config';
 
 export default function Dashboard(){
   const [user, setUser] = useState(null);
@@ -22,7 +23,7 @@ export default function Dashboard(){
   }, []);
 
   async function fetchProfile(token){
-    const res = await fetch('http://localhost:4000/api/profile', {
+    const res = await fetch(API_ENDPOINTS.PROFILE, {
       headers: { Authorization: 'Bearer ' + token }
     });
     if(res.ok){
@@ -35,7 +36,7 @@ export default function Dashboard(){
   }
 
   async function fetchItems(token){
-    const res = await fetch('http://localhost:4000/api/items?q=' + encodeURIComponent(q), {
+    const res = await fetch(getItemsEndpoint(q), {
       headers: { Authorization: 'Bearer ' + token }
     });
     if(res.ok){
@@ -48,7 +49,7 @@ export default function Dashboard(){
     e.preventDefault();
     const token = localStorage.getItem('token');
     if(!title) return;
-    const res = await fetch('http://localhost:4000/api/items', {
+    const res = await fetch(API_ENDPOINTS.ITEMS, {
       method: 'POST',
       headers: { 'Content-Type':'application/json', Authorization: 'Bearer ' + token },
       body: JSON.stringify({ title })
@@ -74,7 +75,7 @@ export default function Dashboard(){
     const token = localStorage.getItem('token');
     setBusyId(id);
     try{
-      const res = await fetch('http://localhost:4000/api/items/' + id, {
+      const res = await fetch(getItemEndpoint(id), {
         method: 'PUT',
         headers: { 'Content-Type':'application/json', Authorization: 'Bearer ' + token },
         body: JSON.stringify({ title: editTitle })
@@ -96,7 +97,7 @@ export default function Dashboard(){
     const token = localStorage.getItem('token');
     setBusyId(id);
     try{
-      const res = await fetch('http://localhost:4000/api/items/' + id, {
+      const res = await fetch(getItemEndpoint(id), {
         method: 'DELETE',
         headers: { Authorization: 'Bearer ' + token }
       });

@@ -8,8 +8,11 @@ const itemsRoutes = require('./routes/items');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+// Dynamic CORS configuration based on environment
+const allowedOrigins = process.env.CLIENT_URL ? [process.env.CLIENT_URL] : ['http://localhost:3000'];
+
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: allowedOrigins,
   credentials: true,
 }));
 app.use(express.json());
